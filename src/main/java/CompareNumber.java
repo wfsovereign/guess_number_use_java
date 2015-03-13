@@ -1,5 +1,3 @@
-package com.mycompany.iamcoacher.guessnumber;
-
 /**
  * Created by wfsovereign on 15-3-12.
  */

@@ -1,4 +1,3 @@
-import com.mycompany.iamcoacher.guessnumber.CompareNumber;
 import org.junit.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
