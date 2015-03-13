@@ -25,7 +25,7 @@ public class AnswerGenerator {
             historyGenerateString.remove(0);
         }
         historyGenerateString.add(result);
-        System.out.println("==============");
+//        System.out.println("==============");
 //        System.out.println(historyGenerateString);
         return result;
     }
