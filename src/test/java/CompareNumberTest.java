@@ -40,4 +40,16 @@ public class CompareNumberTest {
         assertThat(result).isEqualTo("0A4B");
     }
 
+    @Test
+    public void should_return_1A1B_when_get_tips_given_input_is_1234_and_answer_is_1467(){
+        String input = "1234";
+        String answer = "1467";
+
+        String result = new CompareNumber().getTips(input,answer);
+
+        assertThat(result).isEqualTo("1A1B");
+
+    }
+
+
 }
