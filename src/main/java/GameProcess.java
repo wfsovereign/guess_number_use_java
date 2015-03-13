@@ -22,14 +22,21 @@ public class GameProcess {
         out.println("welcome!");
         int roundCount = 6;
         String answer = answerGenerator.generate();
+        String tips = "";
         while (roundCount > 0){
             out.println("Please input your number("+roundCount+"): ");
 
             String input = reader.readLine();
-            String tips = compareNumber.getTips(input,answer);
-
+            tips = compareNumber.getTips(input,answer);
+            if("4A0B".equals(tips)){
+                break;
+            }
             out.println(tips);
             roundCount--;
+        }
+        if("4A0B".equals(tips)){
+            out.println("Congratulation!!");
+            return;
         }
         out.println("Game Over");
 
