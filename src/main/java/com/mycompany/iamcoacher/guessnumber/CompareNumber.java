@@ -8,6 +8,15 @@ public class CompareNumber {
         if(input.equals(answer)){
             return "4A0B";
         }
+        int containCount = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if(answer.contains(String.valueOf(input.charAt(i)))){
+                containCount++;
+            }
+        }
+        if (containCount == 0){
+            return "0A0B";
+        }
         return null;
     }
 }
