@@ -100,4 +100,45 @@ public class GameProcessTest {
 
 
     }
+
+    @Test
+    public void should_congratulate_when_input_is_right_on_second_round() throws IOException {
+        given(reader.readLine()).willReturn("1234").willReturn("4321");
+
+        game.start();
+        inOrder.verify(out).println("welcome!");
+        inOrder.verify(out).println("Please input your number(6): ");
+        inOrder.verify(out).println("0A4B");
+        inOrder.verify(out).println("Please input your number(5): ");
+        inOrder.verify(out,never()).println("4A0B");
+
+        inOrder.verify(out).println("Congratulation!!");
+    }
+
+    @Test
+    public void should_congratulate_when_input_is_right_on_last_round() throws IOException {
+        given(reader.readLine()).willReturn("1234","1234","1234","1234","1234").willReturn("4321");
+
+        game.start();
+        inOrder.verify(out).println("welcome!");
+        inOrder.verify(out).println("Please input your number(6): ");
+        inOrder.verify(out).println("0A4B");
+        inOrder.verify(out).println("Please input your number(5): ");
+        inOrder.verify(out).println("0A4B");
+
+        inOrder.verify(out).println("Please input your number(4): ");
+        inOrder.verify(out).println("0A4B");
+
+        inOrder.verify(out).println("Please input your number(3): ");
+        inOrder.verify(out).println("0A4B");
+
+        inOrder.verify(out).println("Please input your number(2): ");
+        inOrder.verify(out).println("0A4B");
+
+        inOrder.verify(out).println("Please input your number(1): ");
+        inOrder.verify(out,never()).println("4A0B");
+
+        inOrder.verify(out).println("Congratulation!!");
+    }
+
 }
