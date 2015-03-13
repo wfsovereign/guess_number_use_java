@@ -18,6 +18,7 @@ public class GameProcessTest {
     private GameProcess game;
     private AnswerGenerator answerGenerator;
     private BufferedReader reader;
+    private InOrder inOrder;
 
     @Before
     public void setUp() throws IOException {
@@ -28,7 +29,7 @@ public class GameProcessTest {
         given(reader.readLine()).willReturn("1234");
         given(answerGenerator.generate()).willReturn("4321");
         game = new GameProcess(out, reader,compareNumber, answerGenerator);
-
+        inOrder = inOrder(out);
 
     }
 
@@ -48,7 +49,6 @@ public class GameProcessTest {
 
 
         game.start();
-        InOrder inOrder = inOrder(out);
         inOrder.verify(out).println("welcome!");
         inOrder.verify(out).println("Please input your number(6): ");
 
@@ -59,7 +59,7 @@ public class GameProcessTest {
 
 
         game.start();
-        InOrder inOrder = inOrder(out);
+
 
         inOrder.verify(out).println("welcome!");
         inOrder.verify(out).println("Please input your number(6): ");
@@ -67,4 +67,25 @@ public class GameProcessTest {
         inOrder.verify(out).println("Please input your number(5): ");
     }
 
+    @Test
+    public void should_reduce_chance_one_by_one_until_game_over() throws IOException {
+        game.start();
+
+        inOrder.verify(out).println("welcome!");
+        inOrder.verify(out).println("Please input your number(6): ");
+        inOrder.verify(out).println("0A4B");
+        inOrder.verify(out).println("Please input your number(5): ");
+        inOrder.verify(out).println("0A4B");
+        inOrder.verify(out).println("Please input your number(4): ");
+        inOrder.verify(out).println("0A4B");
+        inOrder.verify(out).println("Please input your number(3): ");
+        inOrder.verify(out).println("0A4B");
+        inOrder.verify(out).println("Please input your number(2): ");
+        inOrder.verify(out).println("0A4B");
+        inOrder.verify(out).println("Please input your number(1): ");
+        inOrder.verify(out).println("0A4B");
+        inOrder.verify(out).println("Game Over");
+
+    }
+    
 }

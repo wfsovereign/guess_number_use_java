@@ -20,15 +20,18 @@ public class GameProcess {
 
     public void start() throws IOException {
         out.println("welcome!");
-        out.println("Please input your number(6): ");
+        int roundCount = 6;
         String answer = answerGenerator.generate();
-        String input = reader.readLine();
-        String tips = compareNumber.getTips(input,answer);
+        while (roundCount > 0){
+            out.println("Please input your number("+roundCount+"): ");
 
-        out.println(tips);
-        if (!"4A0B".equals(tips)){
-            out.println("Please input your number(5): ");
+            String input = reader.readLine();
+            String tips = compareNumber.getTips(input,answer);
+
+            out.println(tips);
+            roundCount--;
         }
+        out.println("Game Over");
 
     }
 }
