@@ -14,5 +14,6 @@ public class GameProcess {
 
     public void start() {
         out.println("welcome!");
+        out.println("Please input your number(6): ");
     }
 }
